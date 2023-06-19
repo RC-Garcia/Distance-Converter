@@ -1,0 +1,33 @@
+def convert_distance(distance, from_unit, to_unit):
+    """
+    Converts a distance from one unit to another.
+
+    Arguments:
+    distance -- The distance to be converted (float).
+    from_unit -- The unit of the distance (string).
+    to_unit -- The unit to convert to (string).
+
+    Returns:
+    The converted distance (float).
+    """
+    conversion_rates = {
+        'mm': 0.001,
+        'cm': 0.01,
+        'm': 1.0,
+        'km': 1000.0,
+        'in': 0.0254,
+        'ft': 0.3048,
+        'mi': 1609.34,
+    }
+
+    if from_unit in conversion_rates and to_unit in conversion_rates:
+        return distance * conversion_rates[from_unit] / conversion_rates[to_unit]
+    else:
+        raise ValueError("Invalid unit.")
+
+# Example usage:
+distance = 100
+from_unit = 'km'
+to_unit = 'mi'
+converted_distance = convert_distance(distance, from_unit, to_unit)
+print(f"{distance} {from_unit} is equal to {converted_distance} {to_unit}.")
